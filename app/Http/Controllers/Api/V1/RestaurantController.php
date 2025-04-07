@@ -1,9 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+declare(strict_types=1);
 
+namespace App\Http\Controllers\Api\V1;
+
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
+use App\Http\Resources\V1\RestaurantCollection;
+use App\Http\Resources\V1\RestaurantResource;
 use App\Models\Restaurant;
 
 class RestaurantController extends Controller
@@ -11,17 +16,9 @@ class RestaurantController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): RestaurantCollection
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return new RestaurantCollection(Restaurant::paginate());
     }
 
     /**
@@ -35,17 +32,9 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Restaurant $restaurant)
+    public function show(Restaurant $restaurant): RestaurantResource
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Restaurant $restaurant)
-    {
-        //
+        return new RestaurantResource($restaurant);
     }
 
     /**
