@@ -18,6 +18,13 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    protected $perPage = 15;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

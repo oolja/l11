@@ -7,7 +7,7 @@ namespace App\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RestaurantResource extends JsonResource
+class ItemResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,11 +19,10 @@ class RestaurantResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'createdAt' => $this->created_at,
-            'updatedAt' => $this->updated_at,
-            'users' => UserResource::collection($this->whenLoaded('users')),
+            'price' => $this->price,
+            'description' => $this->description,
+            'restaurant' => RestaurantResource::make($this->whenLoaded('restaurant')),
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
-            'items' => ItemResource::collection($this->whenLoaded('items')),
         ];
     }
 }

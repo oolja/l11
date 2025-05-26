@@ -8,20 +8,32 @@ use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Category extends Model
 {
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;
 
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    protected $perPage = 15;
+
+    protected $fillable = [
+        'name',
+        'restaurant_id',
+    ];
+
     public function restaurant(): BelongsTo
     {
         return $this->belongsTo(Restaurant::class);
     }
 
-    public function items(): HasMany
+    public function items(): BelongsToMany
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsToMany(Item::class);
     }
 }

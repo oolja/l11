@@ -15,6 +15,17 @@ class Restaurant extends Model
     /** @use HasFactory<RestaurantFactory> */
     use HasFactory;
 
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    protected $perPage = 15;
+
+    protected $fillable = [
+        'name',
+    ];
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);

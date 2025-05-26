@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+declare(strict_types=1);
+
+namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class StoreCategoryRequest extends FormRequest
 {
@@ -11,7 +14,7 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +25,17 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:255'],
+            'restaurantId' => ['required', 'integer'],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $snakeCased = collect($this->all())
+            ->mapWithKeys(fn ($value, $key) => [Str::snake($key) => $value])
+            ->toArray();
+
+        $this->merge($snakeCased);
     }
 }
