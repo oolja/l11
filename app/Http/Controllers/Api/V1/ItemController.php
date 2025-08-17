@@ -13,7 +13,7 @@ use App\Http\Resources\V1\ItemResource;
 use App\Models\Item;
 use Illuminate\Http\Response;
 
-class ItemController extends Controller
+final class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.

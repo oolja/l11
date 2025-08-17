@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Resources\V1;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ItemResource extends JsonResource
+/**
+ * @mixin Item
+ */
+final class ItemResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

@@ -94,7 +94,7 @@ class ApiFilter
                 continue;
             }
 
-            $direction = ($field[0] === '-') ? 'desc' : 'asc';
+            $direction = str_starts_with($field, '-') ? 'desc' : 'asc';
 
             $this->builder->orderBy($this->columnMap[$column] ?? $column, $direction);
         }

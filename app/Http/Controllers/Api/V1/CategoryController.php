@@ -13,7 +13,7 @@ use App\Http\Resources\V1\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Response;
 
-class CategoryController extends Controller
+final class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -13,7 +13,7 @@ use App\Http\Resources\V1\RestaurantResource;
 use App\Models\Restaurant;
 use Illuminate\Http\Response;
 
-class RestaurantController extends Controller
+final class RestaurantController extends Controller
 {
     /**
      * Display a listing of the resource.

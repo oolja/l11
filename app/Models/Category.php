@@ -5,12 +5,20 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Database\Factories\CategoryFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Category extends Model
+/**
+ * @method static Builder|Category create(array $attributes = [])
+ *
+ * @property int $id
+ * @property int $restaurant_id
+ * @property string $name
+ */
+final class Category extends Model
 {
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;

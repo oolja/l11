@@ -10,7 +10,7 @@ use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class RestaurantSeeder extends Seeder
+final class RestaurantSeeder extends Seeder
 {
     public function run(): void
     {
